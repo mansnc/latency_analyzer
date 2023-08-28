@@ -4,15 +4,26 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from your Git repository
                 checkout scm
             }
         }
 
-        stage('Run Script') {
+        stage('Build') {
             steps {
-                // Execute the main.py script
-                bat 'start python main.py'
+                bat 'echo Building...'
+				bat 'C:\\msys64\\mingw64\\bin\\python.exe main.py'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'echo Testing...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat 'echo Deploying...'
             }
         }
     }

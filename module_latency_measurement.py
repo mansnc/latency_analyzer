@@ -10,6 +10,7 @@ def measure_latency(ip_addr, pkts2send):
             count_option = "-c"
         ping_out = subprocess.check_output(["ping", count_option,pkts2send, ip_addr])
         time = get_round_trip_time (ping_out)
+        print(time)
         return time
     except subprocess.CalledProcessError:
         return None
@@ -22,7 +23,8 @@ def get_round_trip_time(ping_out):
     idx1 = ping_str.find(substring1)
     idx2 = ping_str.find(substring2)
     time_str = ping_str[(idx1 + len(substring1)):idx2]
-    time_str = re.sub("ms", "", time_str) 
+    time_str = re.sub("ms", "", time_str)
+    print(time_str)    
     
     return int(time_str)
 
