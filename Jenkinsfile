@@ -27,8 +27,8 @@ pipeline {
     }
 
     post {
-        always {
+        //always {
             // Perform cleanup or other final actions
-        }
+        //}
     }
 }
