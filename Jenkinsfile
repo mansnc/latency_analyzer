@@ -12,7 +12,7 @@ pipeline {
         stage('Run Script') {
             steps {
                 // Execute the main.py script
-                sh 'python main.py'
+                bat 'start python main.py'
             }
         }
     }
