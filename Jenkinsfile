@@ -18,8 +18,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    def dockerImage = docker.build('latency-analyzer:1.0', '-f Dockerfile .')
-                    dockerImage.push()
+                    docker.build("latency-analyzer:1.0", "-f Dockerfile .")
                 }
             }
         }
