@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'echo Building...'
-				bat 'python main.py'
+				bat 'C:\\msys64\\mingw64\\bin\\python.exe main.py'
             }
         }
 
