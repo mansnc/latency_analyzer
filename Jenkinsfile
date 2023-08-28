@@ -11,24 +11,15 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Build your Latency Analyzer tool
-                script {
-                    def buildOutput = sh(script: 'your_build_command_here', returnStatus: true)
-                    if (buildOutput == 0) {
-                        echo 'Build succeeded'
-                    } else {
-                        error 'Build failed'
-                    }
-                }
+                // Build your Latency Analyzer tool (if applicable)
             }
         }
 
-        // Add more stages (e.g., test, deploy) as needed
-    }
-
-    post {
-        //always {
-            // Perform cleanup or other final actions
-        //}
+        stage('Run Script') {
+            steps {
+                // Execute the latency_measurement.py script
+                sh 'python3 main.py'
+            }
+        }
     }
 }
