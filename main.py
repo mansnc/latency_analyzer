@@ -1,7 +1,7 @@
 from module_latency_measurement import measure_latency
 
 ip_addr = "8.8.8.8"
-pkts2send = "1"
+pkts2send = "4"
 latency = measure_latency(ip_addr, pkts2send)
 
 if latency is not None:
