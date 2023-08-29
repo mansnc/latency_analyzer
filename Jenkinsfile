@@ -15,13 +15,13 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
-            steps {
-                script {
-                    docker.build("latency-analyzer:1.0", "-f Dockerfile .")
-                }
-            }
-        }
+        //stage('Docker Build') {
+            //steps {
+                //script {
+                    //docker.build("latency-analyzer:1.0", "-f Dockerfile .")
+                //}
+            //}
+        //}
 
         stage('Test') {
             steps {
