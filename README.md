@@ -33,7 +33,7 @@ User can set different target host address (either IP address or hostname) and a
 git clone https://github.com/mansnc/latency_analyzer.git
 ```
 
-# Requirements
+## Requirements
 
 This project requires the following packages to be installed before running. Assuming "pip" is already installed:  
 
@@ -43,7 +43,7 @@ pip install platform
 pip install statistics
 ```
 
-# Usage 
+## Usage 
 Simply go to main.py and modify the section instances based on your need: 
 
 ```
