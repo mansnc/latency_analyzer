@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Checkout from Git') {
             steps {
                 checkout scm
             }
@@ -23,16 +23,17 @@ pipeline {
             //}
         //}
 
-        stage('Test') {
+        stage('Test Latency Measurement Module') {
             steps {
                 bat 'echo Testing...'
+				bat 'C:\\msys64\\mingw64\\bin\\python.exe unittest_measure_latency.py'
             }
         }
 
-        stage('Deploy') {
-            steps {
-                bat 'echo Deploying...'
-            }
-        }
+        //stage('Deploy') {
+        //    steps {
+        //        bat 'echo Deploying...'
+        //    }
+        //}
     }
 }
