@@ -12,8 +12,8 @@ This project aim to analyze packet-level latency using combination of python scr
 2. [Requirements](#requirements)
 3. [Usage](#usage)
 4. [CI/CD Environment and Tests](#tests)
-    3.1. [Jenkins Setup](#jenkinssetup)
-    3.2. [Docker Setup](#dockersetup)
+   3.1. [Jenkins Setup](#jenkinssetup)
+   3.2. [Docker Setup](#dockersetup)
 
 
 ## Features
@@ -56,3 +56,9 @@ instances = [
 ```
 
 You can add more instances to this data structure as mentioned above. After modifying your instances, simply run the code and see the results. Here is the snapshot of the results: 
+
+```
+Instance: github.com, Latency-all-pkts: [39, 36] ms, Max Latency: 39, Min Latency: 36, Mean Latency: 37.5, Success Ratio: 66.66666666666666
+Instance: google.com, Latency-all-pkts: [82, 20, 17, 19] ms, Max Latency: 82, Min Latency: 17, Mean Latency: 34.5, Success Ratio: 100.0       
+Instance: bing.com, Latency-all-pkts: [25, 33, 16] ms, Max Latency: 33, Min Latency: 16, Mean Latency: 24.666666666666668, Success Ratio: 75.0
+```
