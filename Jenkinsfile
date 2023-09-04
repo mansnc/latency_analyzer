@@ -13,6 +13,7 @@ pipeline {
 			steps {
 				// Install Required Packages
 				bat 'check_packages_windows.bat'
+			}
 		}
 
 
