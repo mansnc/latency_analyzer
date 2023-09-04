@@ -8,13 +8,13 @@ pipeline {
             }
         }
 		
-	stages {
-        stage('Setup Packages') {
-            steps {
-              // Install Required Packages
+
+		stage('Setup Packages') {
+			steps {
+				// Install Required Packages
 				bat 'check_packages_windows.bat'
-            }
-        }
+		}
+
 
         stage('Build Ping-Latency-Measure') {
             steps {
