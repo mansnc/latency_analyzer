@@ -11,10 +11,8 @@ pipeline {
 	stages {
         stage('Setup Packages') {
             steps {
-                script {
-                    // Install Required Packages
-                    bat 'check_packages_windows.bat'
-                }
+              // Install Required Packages
+				bat 'check_packages_windows.bat'
             }
         }
 
