@@ -1,0 +1,5 @@
+[
+    {"addr": "bing.com", "pkts2send": 1, "pktsize": 64, "ttl": 64, "interval": 2, "IP_v": 4, "timeout": 1},
+    {"addr": "github.com", "pkts2send": 1, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4, "timeout": 2},
+    {"addr": "google.com", "pkts2send": 1, "pktsize": 128, "ttl": 64, "interval": 1, "IP_v": 4, "timeout": 3}
+]

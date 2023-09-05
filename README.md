@@ -1,31 +1,4 @@
-# Latency Analyzer
-
-## Packet-Level latency analysis
-
-This project aim to analyze packet-level latency using combination of python scripting and regular python coding for data processing with two different scenarios: 
-- Using standard ping interface and sending ICMP sequences. All processing in this scenario are post-processing. 
-- Using **Scapy** library that exploits more sophisticated tools to manipulate the packets and make different types of analysis. This utilization is done based on real-time processing. 
-
-## Table of Contents
-
-1. [Features](#features)
-2. [Requirements](#requirements)
-3. [Usage](#usage)
-4. [CI/CD Environment and Tests](#tests)
-   3.1. [Jenkins Setup](#jenkinssetup)
-   3.2. [Docker Setup](#dockersetup)
-
-
-## Features
-When basic ping command is used, the main.py will initiate ping commands with the following options given by the user: 
-
-- Number of packets to send 
-- IP version (4 or 6)
-- Packet Size
-- Time to Live (TTL)
-- Transmission Interval
-
-User can set different target host address (either IP address or hostname) and all commands and calculations are conducted through one module called "Latency Measurement Module". Both Windows and Linux/MacOS will recognize the input as they are different in terms of the option letters. For instance, number of packets in Unix/MacOS system is determined by switch "-c" while in windows it is determined by "-n". 
+#Packet-Level Latency Measurement
 
 
 ```bash
@@ -33,32 +6,86 @@ User can set different target host address (either IP address or hostname) and a
 git clone https://github.com/mansnc/latency_analyzer.git
 ```
 
-## Requirements
 
-This project requires the following packages to be installed before running. Assuming "pip" is already installed:  
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+  - [Verify/Install required packages with Batch/Bash](#verifyinstall-required-packages-with-batchbash)
+- [How to run](#how-to-run)
+- [Results](#results)
+- [Unit Tests](#unit-tests)
+- [CI/CD Setup](#cicd-setup)
+  - [Jenkins](#jenkins)
+  - [Docker](#docker)
+
+
+## Introduction
+
+This project aim to analyze packet-level latency using combination of python scripting and regular python coding for data processing with two different scenarios: 
+- Using standard **ping** interface and sending ICMP sequences. 
+- Using **Scapy** library that exploits more advanced tools to manipulate the packets. It can be used to stack different layers of protocols together and it gives comprehensive tools to monitor the network flow along with interesting tools for security purposes. Nevertheless, here scapy is used only for latency measurement purposes. You can refer to [Scapy Documentation](https://scapy.readthedocs.io/en/latest/introduction.html) for more use cases and details. 
+
+
+## Features
+Following options are available when calling conventional **ping** command and **Scapy**
+
+- Number of packets to send 
+- IP version (4 or 6)
+- Packet Size
+- Time to Live (TTL)
+- Timeout to receive response
+- Transmission Interval
+
+Configuration can be set using [instances.json](instances.json) file. Below is the snapshot of the sample json file: 
 
 ```
-pip install subprocess
-pip install platform
-pip install statistics
-```
-
-## Usage 
-Simply go to main.py and modify the section instances based on your need: 
-
-```
-instances = [
-    {"addr": "github.com", "pkts2send": 3, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4},
-    {"addr": "google.com", "pkts2send": 4, "pktsize": 128, "ttl": 64, "interval": 3, "IP_v": 6},
-    {"addr": "bing.com", "pkts2send": 4, "pktsize": 128, "ttl": 64, "interval": 3, "IP_v": 4},
-    # add more instances here...
+[
+    {"addr": "bing.com", "pkts2send": 1, "pktsize": 64, "ttl": 64, "interval": 2, "IP_v": 4, "timeout": 1},
+    {"addr": "github.com", "pkts2send": 1, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4, "timeout": 2},
+    {"addr": "google.com", "pkts2send": 1, "pktsize": 128, "ttl": 64, "interval": 1, "IP_v": 4, "timeout": 3}
 ]
 ```
+While this json file is designed for [main.py](main.py) in which it calls both modules, namely [module_ping_measure_latency.py](module_ping_measure_latency.py) and [module_scapy_measure_latency.py](module_ping_measure_latency.py), however, each module has its own script and those instances can be modified within those scripts separately.   
 
-You can add more instances to this data structure as mentioned above. After modifying your instances, simply run the code and see the results. Here is the snapshot of the results: 
+
+## Requirements
+
+This project requires the following packages to be installed before running. Assuming "pip" is already installed, execute the following commands in CMD/powershell on windows or in Bash of Linux/MacOS  
 
 ```
-Instance: github.com, Latency-all-pkts: [39, 36] ms, Max Latency: 39, Min Latency: 36, Mean Latency: 37.5, Success Ratio: 66.66666666666666
-Instance: google.com, Latency-all-pkts: [82, 20, 17, 19] ms, Max Latency: 82, Min Latency: 17, Mean Latency: 34.5, Success Ratio: 100.0       
-Instance: bing.com, Latency-all-pkts: [25, 33, 16] ms, Max Latency: 33, Min Latency: 16, Mean Latency: 24.666666666666668, Success Ratio: 75.0
+pip install scapy
+pip install statistics
+pip install matplotlib
 ```
+### Verify/Install required packages with Batch/Bash
+Simply execute [check_packages_windows.bat](check_packages_windows.bat) if you are on windows machine and [check_packages_unix_mac.sh](check_packages_unix_mac.sh) if you are on a unix-based (Linux/MacOS) machine by excuting the following commands in project's root:
+```
+chmod +x check_packages_unix_mac.sh
+./check_packages_unix_mac.sh
+``` 
+Those batch/bash scripts will make sure pip is installed on your machine and it will use appropriate version of the pip (pip/pip3) coressponding the version of python installation; namely, python or python3, espectively, associated with pip and pip3.  
+
+## How to run
+
+You can either run each module separately as follows:
+
+- For ping: [main_run_ping.py](main_run_ping.py)
+- For Scapy: [main_run_scapy.py](main_run_scapy.py)
+
+Or run [main.py](main.py) that lunches both modules sequentially and generates results for each module. 
+
+
+## Results
+Results are visualized for given queries in json file and here is the snapshop of some experiments. 
+
+## Unit Tests
+Two simple unit tests are designed to check the functionality of the latency measurement modules, namely [module_ping_measure_latency.py](module_ping_measure_latency.py) and [module_scapy_measure_latency.py](module_ping_measure_latency.py). Sicne we are expecting measurement modules to return latency for target hosts, test units will check whether the returned results from these modules are i) not null and ii) a number greater equal than 0. To run test units simply execute the following files in Python: 
+- For Ping: run [unittest_measure_latency_ping.py](unittest_measure_latency_ping.py)
+- For Scapy: run [unittest_measure_latency_scapy.py](unittest_measure_latency_scapy.py)
+
+## CI/CD Setup
+This project has CI/CD methodologies integrated within utilizing tools from Jenkins and Docker. I've utilize Jenkins to continuesly monitor my branches status whenever I made a commit on those branches. In what follows, I'll provide step-by-step guide how to setup Jenkins and Docker on your local machine to monitor the status of the branches in case one wants to add new features to this project. 
+### Jenkins
+### Docker
+

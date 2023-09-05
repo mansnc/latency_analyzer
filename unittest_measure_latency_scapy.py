@@ -1,7 +1,6 @@
 import unittest
 from unittest.mock import patch
-from module_latency_measurement import measure_latency
-
+from module_scapy_measure_latency import scapy_measure_latency
 
 class TestLatencyMeasurement(unittest.TestCase):
     
@@ -18,28 +17,15 @@ class TestLatencyMeasurement(unittest.TestCase):
         pktsize = 64
         ttl = 128
         interval = 1
+        timeout = 2
         IP_v = 4
-
-        latency  = measure_latency(addr, IP_v, pkts2send, pktsize, ttl, interval)
+        latency  = scapy_measure_latency(addr, pkts2send, pktsize, ttl, interval, timeout, IP_v)
         
         # Test for all packets 
         for x in latency:
             self.assertIsNotNone(x)
             self.assertGreaterEqual(x, 0.0)
             #self.assertIsInstance(x, float)
-
-
-
-    # def test_failed_latency_measurement(self):
-    #     addr = 'invalid_address'
-    #     pkts2send = 5
-    #     pktsize = 64
-    #     ttl = 128
-    #     interval = 1
-    #     IP_v = 4
-
-    #     latency = measure_latency(addr, IP_v, pkts2send, pktsize, ttl, interval)
-    #     self.assertIsNone(latency)
 
 if __name__=='__main__':
     unittest.main()
