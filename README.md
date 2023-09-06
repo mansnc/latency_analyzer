@@ -78,6 +78,23 @@ Or run [main.py](main.py) that lunches both modules sequentially and generates r
 
 ## Results
 Results are visualized for given queries in json file and here is the snapshop of some experiments. 
+The following results demonstrates latency per each packet when using Scapy tools. Since ping command doesn't provide ways to track a specific packet, packet-wise results for ping command is not included in this graph. Nevetheless, if there is no packet loss in the ping command, once can easily plot the ping results as well. 
+
+![](results/scapy_results.png)
+
+
+Below is the summary of the latency w.r.t four target hosts. As can be seen, Scapy latencies are slightly different from the ping counterpart and here are the reasons: 
+
+**Overhead:** When we use Scapy to send packets, there's an overhead associated with the Python interpreter, the Scapy library, and the system calls it makes. This overhead can introduce slight delays in packet transmission and reception. On the other hand, the ping command, which typically uses the ICMP protocol, is a lightweight, native tool optimized for its purpose. This means that, in some cases, Scapy might report slightly higher latencies than ping.
+
+**Packet Construction:** Scapy gives the ability to craft custom packets, which means you have control over the packet's size, headers, and other attributes. The size and structure of the packet can influence the time it takes for the packet to be processed by intermediate devices and the target host. If you're sending a packet with Scapy that's larger or more complex than a standard ICMP echo request (used by ping), it might take longer to process, leading to higher reported latencies.
+
+**Response Handling:** The way each tool handles responses can also differ. Scapy might take slightly longer to process incoming packets due to its Python-based nature, while ping is optimized for quick response handling.
+
+![](results/scapy_vs_ping.png)
+
+
+
 
 ## Unit Tests
 Two simple unit tests are designed to check the functionality of the latency measurement modules, namely [module_ping_measure_latency.py](module_ping_measure_latency.py) and [module_scapy_measure_latency.py](module_ping_measure_latency.py). Sicne we are expecting measurement modules to return latency for target hosts, test units will check whether the returned results from these modules are i) not null and ii) a number greater equal than 0. To run test units simply execute the following files in Python: 
