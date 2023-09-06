@@ -8,14 +8,12 @@ pipeline {
             }
         }
 		
-
 		stage('Setup Packages') {
 			steps {
 				// Install Required Packages
 				bat 'check_packages_windows.bat'
 			}
 		}
-
 
         stage('Build Ping-Latency-Measure') {
             steps {
@@ -37,6 +35,7 @@ pipeline {
                 bat 'python main.py'
             }
         }
+        // Enabled this stage if you want to have docker enabled for the project
 
         //stage('Docker Build') {
             //steps {
@@ -59,11 +58,5 @@ pipeline {
 				bat 'python unittest_measure_latency_scapy.py'
             }
         }
-
-        //stage('Deploy') {
-        //    steps {
-        //        bat 'echo Deploying...'
-        //    }
-        //}
     }
 }

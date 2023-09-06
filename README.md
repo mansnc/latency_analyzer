@@ -103,6 +103,13 @@ Two simple unit tests are designed to check the functionality of the latency mea
 
 ## CI/CD Setup
 This project has CI/CD methodologies integrated within utilizing tools from Jenkins and Docker. I've utilize Jenkins to continuesly monitor my branches status whenever I made a commit on those branches. In what follows, I'll provide step-by-step guide how to setup Jenkins and Docker on your local machine to monitor the status of the branches in case one wants to add new features to this project.
+
 ### Jenkins
+Jenkins is integrated with multibranch pipeline for this project and assuming that all requirements for the Jenkins are installed in your local machine, the following stages will be visible when on this pipeline. Please refer to [Jenkinsfile](Jenkinsfile) for any modifications. This file is yet to be completed as the current version supports only windows machine. 
+
+![](results/jenkins.png)
+
+
 ### Docker
+Docker is also integrated to the project and one can enable Docker stage in Jenkinsfile to run the entire project within a Docker container. Make sure that Docker is already installed on your local machine. Please refer to [Dockerfile](Dockerfile) Docker file for any required changes. 
 
