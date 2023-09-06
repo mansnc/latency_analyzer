@@ -35,6 +35,8 @@ for instance in instances:
     except Exception as e:
         print(f"Error measuring latency for instance: {instance['addr']}, Error: {e}")
 
+# Visulation should be disabled when the branch is running on Jenkins
 #visualize_results(results_scapy,results_ping)
+
 
 

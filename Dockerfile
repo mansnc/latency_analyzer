@@ -17,6 +17,6 @@ EXPOSE 80
 ENV NAME World
 
 # Run main.py when the container launches
-CMD ["python", "main_run_ping.py"]
+CMD ["python", "main.py"]
 
 
