@@ -2,9 +2,9 @@ import statistics
 from module_ping_measure_latency import ping_measure_latency
 
 instances = [
-    {"addr": "github.com", "pkts2send": 3, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4},
-    {"addr": "google.com", "pkts2send": 4, "pktsize": 128, "ttl": 64, "interval": 3, "IP_v": 6},
-    {"addr": "bing.com", "pkts2send": 4, "pktsize": 128, "ttl": 64, "interval": 3, "IP_v": 4},
+    {"addr": "github.com", "pkts2send": 2, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4},
+    {"addr": "google.com", "pkts2send": 2, "pktsize": 64, "ttl": 128, "interval": 3, "IP_v": 6},
+    {"addr": "bing.com", "pkts2send": 2, "pktsize": 64, "ttl": 128, "interval": 3, "IP_v": 4},
 ]
 
 results = []
