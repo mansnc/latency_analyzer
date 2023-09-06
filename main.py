@@ -18,7 +18,7 @@ for instance in instances:
         instance["pkts2send"],
         instance["pktsize"],
         instance["ttl"],
-+        instance["interval"], 
++       instance["interval"], 
         instance["timeout"],
         instance["IP_v"]
     )

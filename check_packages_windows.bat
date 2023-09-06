@@ -22,7 +22,7 @@ echo %PIP_COMMAND% is installed; move on with packages installation
 
 
 REM List of packages to check
-set packages=statistics matplotlib scapy
+set packages=statistics matplotlib scapy seaborn pandas
 
 for %%p in (%packages%) do (
     %PIP_COMMAND% list | findstr /C:"%%p" >nul

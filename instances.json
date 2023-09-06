@@ -1,5 +1,6 @@
 [
-    {"addr": "bing.com", "pkts2send": 2, "pktsize": 64, "ttl": 64, "interval": 2, "IP_v": 4, "timeout": 1},
-    {"addr": "github.com", "pkts2send": 2, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4, "timeout": 2},
-    {"addr": "google.com", "pkts2send": 2, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4, "timeout": 3}
+    {"addr": "github.com", "pkts2send": 5, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4, "timeout": 1},
+    {"addr": "jenkins.io", "pkts2send": 5, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4, "timeout": 1},
+    {"addr": "kubernetes.io", "pkts2send": 5, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4, "timeout": 1},
+    {"addr": "docker.com", "pkts2send": 5, "pktsize": 64, "ttl": 128, "interval": 1, "IP_v": 4, "timeout": 1}
 ]
