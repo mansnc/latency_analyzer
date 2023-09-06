@@ -35,6 +35,6 @@ for instance in instances:
     except Exception as e:
         print(f"Error measuring latency for instance: {instance['addr']}, Error: {e}")
 
-visualize_results(results_scapy,results_ping)
+#visualize_results(results_scapy,results_ping)
 
 
