@@ -77,7 +77,7 @@ Or run [main.py](main.py) that lunches both modules sequentially and generates r
 
 
 ## Results
-Results are visualized for given queries in json file and here is the snapshop of some experiments. 
+Results are visualized for given queries in json file using tools from **Pandas**, **seaborn**, and **matplotlib**, and here is the snapshop of some experiments. 
 The following results demonstrates latency per each packet when using Scapy tools. Since ping command doesn't provide ways to track a specific packet, packet-wise results for ping command is not included in this graph. Nevetheless, if there is no packet loss in the ping command, once can easily plot the ping results as well. 
 
 ![](results/scapy_results.png)
@@ -102,7 +102,7 @@ Two simple unit tests are designed to check the functionality of the latency mea
 - For Scapy: run [unittest_measure_latency_scapy.py](unittest_measure_latency_scapy.py)
 
 ## CI/CD Setup
-This project has CI/CD methodologies integrated within utilizing tools from Jenkins and Docker. I've utilize Jenkins to continuesly monitor my branches status whenever I made a commit on those branches. In what follows, I'll provide step-by-step guide how to setup Jenkins and Docker on your local machine to monitor the status of the branches in case one wants to add new features to this project. 
+This project has CI/CD methodologies integrated within utilizing tools from Jenkins and Docker. I've utilize Jenkins to continuesly monitor my branches status whenever I made a commit on those branches. In what follows, I'll provide step-by-step guide how to setup Jenkins and Docker on your local machine to monitor the status of the branches in case one wants to add new features to this project.
 ### Jenkins
 ### Docker
 
