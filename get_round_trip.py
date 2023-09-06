@@ -12,7 +12,6 @@ def get_round_trip_time(ping_str):
 
     time = []
     for item in result:
-        time.append(int(item))
-    # print(time)
+        time.append(float(item))
     
     return time

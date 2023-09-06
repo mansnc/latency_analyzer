@@ -21,7 +21,7 @@ def scapy_measure_latency(addr, count = None, packet_size = None, ttl = None, in
         reply = sr1 (packet, timeout = timeout, verbose = 0) # for debug: verbose = 1: will give the status of the packet 
         t_after_reply = time.time() # time stamp after getting response 
         if reply is None:
-            latency.append(-1) # I choose "-1" as the codee for no response
+            latency.append(-1) # I choose "-1" as the codee for no response or packet lost!
         else: 
             latency.append((t_after_reply - t_before_send)*1000) # time in ms
         time.sleep(interval)

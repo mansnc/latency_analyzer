@@ -17,7 +17,7 @@ else
 fi
 
 # List of packages to check
-packages=("statistics" "matplotlib" "scapy")
+packages=("statistics" "matplotlib" "scapy" "pandas" "seaborn")
 
 for pkg in "${packages[@]}"; do
     if ! $PIP_COMMAND list | grep -q "$pkg"; then
